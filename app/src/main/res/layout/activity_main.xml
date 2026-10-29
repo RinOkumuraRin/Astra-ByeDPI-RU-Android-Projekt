@@ -1,52 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/status_button"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10pt"
-        android:paddingTop="5pt"
-        android:paddingRight="10pt"
-        android:paddingBottom="5pt"
-        android:textAllCaps="false"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/status_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="@string/vpn_connect" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/status_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/proxy_address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_button"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="@string/vpn_disconnected" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/proxy_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_text"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="127.0.0.1:1080" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/astra_background" android:fillViewport="true">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:orientation="vertical" android:paddingBottom="32dp">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="260dp">
+      <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+          android:src="@drawable/astra_night" android:scaleType="centerCrop" android:contentDescription="@string/astra_scenery" />
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+          android:orientation="vertical" android:padding="22dp" android:background="#70051125">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Astra &amp; Vlady" android:textColor="#8CCBFF" android:textStyle="bold" android:textSize="34sp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="✦  Твой защищённый путь" android:textColor="#DBE8FF" android:textSize="15sp"/>
+      </LinearLayout>
+    </FrameLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center" android:orientation="vertical" android:paddingTop="10dp">
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/status_button" android:layout_width="164dp" android:layout_height="164dp"
+          android:background="@drawable/astra_power" android:backgroundTint="@null"
+          android:text="⏻" android:textSize="72sp" android:textColor="#FFFFFF"
+          android:contentDescription="@string/astra_toggle" android:insetTop="0dp" android:insetBottom="0dp"/>
+      <TextView android:id="@+id/status_text" android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:layout_marginTop="16dp" android:text="@string/vpn_disconnected"
+          android:textColor="#FFFFFF" android:textSize="27sp" android:textStyle="bold"/>
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:layout_marginTop="3dp" android:text="@string/astra_status_subtitle"
+          android:textColor="#AABBD4" android:textSize="14sp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_margin="20dp" android:background="@drawable/astra_panel" android:padding="16dp"
+        android:orientation="vertical">
+      <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+          android:text="@string/astra_local_proxy" android:textColor="#B5C9E6" android:textSize="14sp"/>
+      <TextView android:id="@+id/proxy_address" android:layout_width="match_parent" android:layout_height="wrap_content"
+          android:layout_marginTop="5dp" android:text="127.0.0.1:1080" android:textColor="#FFFFFF" android:textSize="20sp"/>
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton android:id="@+id/action_button"
+        android:layout_width="match_parent" android:layout_height="64dp"
+        android:layout_marginStart="20dp" android:layout_marginEnd="20dp"
+        android:background="@drawable/astra_action" android:backgroundTint="@null"
+        android:text="@string/vpn_connect" android:textColor="#FFFFFF" android:textAllCaps="false"
+        android:textStyle="bold" android:textSize="21sp" android:insetTop="0dp" android:insetBottom="0dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginStart="22dp" android:layout_marginTop="28dp" android:layout_marginBottom="12dp"
+        android:text="@string/astra_quick_settings" android:textColor="#FFFFFF"
+        android:textSize="23sp" android:textStyle="bold"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingStart="15dp" android:paddingEnd="15dp">
+      <Button android:id="@+id/settings_shortcut" android:layout_width="0dp" android:layout_weight="1"
+          android:layout_height="76dp" android:layout_margin="5dp" android:background="@drawable/astra_panel"
+          android:backgroundTint="@null" android:text="⚙  Настройки" android:textAllCaps="false" android:textColor="#FFFFFF" android:textSize="15sp"/>
+      <Button android:id="@+id/mode_shortcut" android:layout_width="0dp" android:layout_weight="1"
+          android:layout_height="76dp" android:layout_margin="5dp" android:background="@drawable/astra_panel"
+          android:backgroundTint="@null" android:text="◈  Режим / DNS" android:textAllCaps="false" android:textColor="#FFFFFF" android:textSize="15sp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingStart="15dp" android:paddingEnd="15dp">
+      <Button android:id="@+id/protocol_shortcut" android:layout_width="0dp" android:layout_weight="1"
+          android:layout_height="76dp" android:layout_margin="5dp" android:background="@drawable/astra_panel"
+          android:backgroundTint="@null" android:text="◎  Протоколы" android:textAllCaps="false" android:textColor="#FFFFFF" android:textSize="15sp"/>
+      <Button android:id="@+id/about_shortcut" android:layout_width="0dp" android:layout_weight="1"
+          android:layout_height="76dp" android:layout_margin="5dp" android:background="@drawable/astra_panel"
+          android:backgroundTint="@null" android:text="ⓘ  О приложении" android:textAllCaps="false" android:textColor="#FFFFFF" android:textSize="15sp"/>
+    </LinearLayout>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginStart="24dp" android:layout_marginEnd="24dp" android:layout_marginTop="18dp"
+        android:text="@string/astra_footer" android:textColor="#8FA5C2" android:textSize="12sp"/>
+  </LinearLayout>
+</ScrollView>

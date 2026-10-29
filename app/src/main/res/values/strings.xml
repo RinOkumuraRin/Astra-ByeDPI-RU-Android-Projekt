@@ -73,4 +73,11 @@
     <string name="desync_https_category">HTTPS</string>
     <string name="byedpi_protocols_category">Протоколы</string>
     <string name="byedpi_protocols_hint">Снимите все флажки для десинхронизации всего трафика</string>
+    <string name="astra_scenery">Ночное небо и луна</string>
+    <string name="astra_toggle">Включить или выключить соединение</string>
+    <string name="astra_status_subtitle">VPN и прокси под контролем</string>
+    <string name="astra_local_proxy">Локальный прокси</string>
+    <string name="astra_quick_settings">Быстрые настройки</string>
+    <string name="astra_footer">Astra &amp; Vlady · Работает на движке ByeDPI с открытым исходным кодом</string>
+    <string name="astra_about_message">Astra &amp; Vlady — интерфейс на основе открытого проекта ByeDPI. Подключение не гарантирует доступность отдельных сайтов и сервисов.</string>
 </resources>

@@ -16,6 +16,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import io.github.dovecoteescapee.byedpi.R
@@ -139,12 +140,25 @@ class MainActivity : AppCompatActivity() {
             registerReceiver(receiver, intentFilter)
         }
 
-        binding.statusButton.setOnClickListener {
+        val toggleConnection = android.view.View.OnClickListener {
             val (status, _) = appStatus
             when (status) {
                 AppStatus.Halted -> start()
                 AppStatus.Running -> stop()
             }
+        }
+
+        binding.statusButton.setOnClickListener(toggleConnection)
+        binding.actionButton.setOnClickListener(toggleConnection)
+        binding.settingsShortcut.setOnClickListener { openSettings() }
+        binding.modeShortcut.setOnClickListener { openSettings() }
+        binding.protocolShortcut.setOnClickListener { openSettings() }
+        binding.aboutShortcut.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.app_name))
+                .setMessage(getString(R.string.astra_about_message))
+                .setPositiveButton("OK", null)
+                .show()
         }
 
         val theme = getPreferences()
@@ -207,6 +221,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun openSettings() {
+        if (appStatus.first == AppStatus.Halted) {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        } else {
+            Toast.makeText(this, R.string.settings_unavailable, Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun start() {
         when (getPreferences().mode()) {
             Mode.VPN -> {
@@ -241,12 +263,12 @@ class MainActivity : AppCompatActivity() {
                 when (preferences.mode()) {
                     Mode.VPN -> {
                         binding.statusText.setText(R.string.vpn_disconnected)
-                        binding.statusButton.setText(R.string.vpn_connect)
+                        binding.actionButton.setText(R.string.vpn_connect)
                     }
 
                     Mode.Proxy -> {
                         binding.statusText.setText(R.string.proxy_down)
-                        binding.statusButton.setText(R.string.proxy_start)
+                        binding.actionButton.setText(R.string.proxy_start)
                     }
                 }
                 binding.statusButton.isEnabled = true
@@ -256,12 +278,12 @@ class MainActivity : AppCompatActivity() {
                 when (mode) {
                     Mode.VPN -> {
                         binding.statusText.setText(R.string.vpn_connected)
-                        binding.statusButton.setText(R.string.vpn_disconnect)
+                        binding.actionButton.setText(R.string.vpn_disconnect)
                     }
 
                     Mode.Proxy -> {
                         binding.statusText.setText(R.string.proxy_up)
-                        binding.statusButton.setText(R.string.proxy_stop)
+                        binding.actionButton.setText(R.string.proxy_stop)
                     }
                 }
                 binding.statusButton.isEnabled = true

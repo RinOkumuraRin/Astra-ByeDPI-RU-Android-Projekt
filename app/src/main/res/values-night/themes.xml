@@ -1,7 +1,9 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.ByeDPI" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.ByeDPI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#07172C</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">#E5E5E5</item>
         <item name="colorOnPrimary">@color/black</item>
